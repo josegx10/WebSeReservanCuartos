@@ -1,0 +1,82 @@
+
+    <app-cabezera (acceso)="CambiarAcceso($event)"></app-cabezera>
+    <div class="menu_usuario">
+        <button  (click)="Cambiar(4)">Anfitrion</button>
+        <button  (click)="Cambiar(7)">Comentarios</button>
+        <button  (click)="CerrarSecion()">Cerrar Secion</button>
+        <button (click)="AbrirNotificacion()"> Notificación </button>
+    </div>
+
+<app-notificacion (verNotificacion)="CambiarNotificacion($event)" *ngIf="verNotificacion"></app-notificacion>
+<h1 class="titulo">Configuración de la Cuenta Personal</h1>
+
+    <form class="usuario" *ngFor="let u of user"  [formGroup]="info">
+        <div class="formulario">
+            <p>Nombre del usuario <br/> {{u.nombre}} </p> <a (click)="CambiarEditar(1)">Editar</a>
+        </div>
+        <div class="invocacion" *ngIf="Editar == 1">
+            <input type="text" placeholder="Nombre(s) del usuario" formControlName="nombre">
+            <button (click)="ModificarUser(u.nombre, u.apellido, u.numero, u.email, u.fecha_naci, 1, u.Huesped,u.Anfitrion, u.password)">Guardar</button>
+            <button (click)="CambiarEditar(0)">Salir</button>
+        </div>
+        <div class="formulario" >
+            <p>Apellidos <br/> {{u.apellido}}</p> <a (click)="CambiarEditar(2)">Editar</a>
+        </div>
+        <div class="invocacion" *ngIf="Editar == 2">
+            <input type="text" placeholder="Apellidos" formControlName="apellido">
+            <button (click)="ModificarUser(u.nombre, u.apellido, u.numero, u.email, u.fecha_naci, 2, u.Huesped,u.Anfitrion,u.password)">Guardar</button>
+            <button (click)="CambiarEditar(0)">Salir</button>
+        </div>
+        <div class="formulario" >
+            <p>Número Telefonico <br/> {{u.numero}} </p> <a (click)="CambiarEditar(3)">Editar</a>
+        </div>
+        <div class="invocacion" *ngIf="Editar == 3">
+            <input type="number"  placeholder="Telefono" formControlName="numero">
+            <button (click)="ModificarUser(u.nombre, u.apellido, u.numero, u.email, u.fecha_naci, 3, u.Huesped,u.Anfitrion, u.password)">Guardar</button>
+            <button (click)="CambiarEditar(0)">Salir</button>
+        </div>
+        <div class="formulario">
+            <p>Correo Electronico <br/> {{u.email}} </p> <a (click)="CambiarEditar(4)">Editar</a>
+        </div>
+        <div class="invocacion" *ngIf="Editar == 4">
+            <input type="email"  placeholder="Email" formControlName="email">
+            <button (click)="ModificarUser(u.nombre, u.apellido, u.numero, u.email, u.fecha_naci, 4, u.Huesped,u.Anfitrion, u.password)">Guardar</button>
+            <button (click)="CambiarEditar(0)">Salir</button>
+        </div>
+        <div class="formulario">
+            <p>Fecha de nacimiento <br/> {{u.fecha_naci}}</p> <a (click)="CambiarEditar(5)">Editar</a>
+        </div>
+        <div class="invocacion" *ngIf="Editar == 5">
+            <input type="date"  formControlName="fecha">
+            <button (click)="ModificarUser(u.nombre, u.apellido, u.numero, u.email, u.fecha_naci, 5, u.Huesped,u.Anfitrion, u.password)">Guardar</button>
+            <button (click)="CambiarEditar(0)">Salir</button>
+        </div>
+        <div class="formulario">
+            <p>Contraseña </p> <a (click)="CambiarEditar(6)">Editar</a>
+        </div>
+        <div class="invocacion" *ngIf="Editar == 6">
+            <input type="password" name="" id="" placeholder="Contraseña Anterior" formControlName="passAnterior"> <br>
+            <input type="password" name="" id="" placeholder="Contraseña" formControlName="contraseña"> <br>
+            <input type="password" name="" id="" placeholder="Confirma Contraseña" formControlName="confirmarcontraseña"> <br>
+            <button (click)="ModificarUser(u.nombre, u.apellido, u.numero, u.email, u.fecha_naci, 6, u.Huesped,u.Anfitrion, u.password)">Guardar</button>
+            <button (click)="CambiarEditar(0)">Salir</button>
+        </div>
+
+      </form>
+
+    <div class="informacion">
+        <div class="Huesped">
+            <p>Reservas realizadas:</p>
+            <div *ngFor="let r of Reserva">
+                <div *ngIf="r.idUsuario == id" class="SoyHuesped" >
+                <a *ngFor="let l of Lugares" href="/{{l.id}}" target="_blank">
+
+                    <img *ngIf="r.idLugar == l.id " src="https://sheltered-stream-77543.herokuapp.com{{l.imagen}}" alt="">
+                    <h4 *ngIf="r.idLugar == l.id " >{{l.Ciudad}}</h4>
+                </a>
+            </div>
+                
+            </div>
+        </div>
+        
+    </div>

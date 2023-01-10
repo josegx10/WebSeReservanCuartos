@@ -1,0 +1,28 @@
+<div >
+    
+      <div class="pantalla">
+  
+      </div>
+    <div class="inicio">
+      <div><img src="../../assets/images/SeReservanCuartos.png" alt="" class="logo" (click)="VolverIndex()"></div>
+      <div class="inicio_b" *ngIf="acceso2 == '1'">
+        <input [formControl]="CP" type="number" class="inicio_lugar" placeholder="Codigo Postal" style="text-align: center;" >
+        <div class="inicio_date" >Fecha Inicial <br><input type="date" [formControl]="fechaI"></div>
+        <div class="inicio_date" >Fecha Final <br><input type="date" [formControl]="fechaF"></div>
+        <button (click)="Busqueda()" > <img src="../../assets/images/busqueda.jpg" alt=""></button>
+      </div>
+      
+      <div class="inicio_c" *ngIf="acceso2 == '2'"></div>
+      
+      <div class="inicio_anfitrion"></div>
+  
+      <div class="dropdown">
+        <button class="dropbtn" (click)="Enlace()"><div class="inicio_usuario"><img src="../../assets/images/usuario.png" alt=""></div></button>
+        <div class="dropdown-content">
+  
+        </div>
+      </div>
+    </div>
+    <app-login *ngIf="logearse == 1" (logearse)="Registro($event)" (acceso)="CambiarAcceso($event)"></app-login>
+    <app-registro *ngIf="logearse == 2" (logearse)="Registro($event)"></app-registro>
+

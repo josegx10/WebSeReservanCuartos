@@ -1,0 +1,11 @@
+<div class="pantalla_inicio">
+    <app-cabezera (acceso)="CambiarAcceso($event)"></app-cabezera>
+    <app-opciones (WindowFiltro)="AbrirFiltro($event)" *ngIf="accesoMap == 1"></app-opciones>
+</div>
+<div class="ButtonIndex">
+    <button   *ngIf="accesoMap == 1" (click)="CambiarMap()">Ver Mapa</button>
+    <button   *ngIf="accesoMap == 2" (click)="CambiarMap()">Ver Listado</button>
+</div>
+<app-filtro *ngIf="WindowFiltro" (WindowFiltro)="AbrirFiltro($event)"></app-filtro>
+<app-menu-cuartos *ngIf="accesoMap == 1" (acceso)="CambiarAcceso($event)"></app-menu-cuartos>
+<app-mapa *ngIf="accesoMap == 2" (acceso)="CambiarAcceso($event)"></app-mapa>

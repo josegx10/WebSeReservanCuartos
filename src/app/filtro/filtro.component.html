@@ -1,0 +1,52 @@
+<div class="filtros">
+    <button class="filtros_salir" (click)="Cerrar()">X</button>
+    <h1 style="font-size: 45px; margin: 0 0 0 40%">Filtros</h1>
+    <hr/>
+    <div class="filtro_contenido">
+        <h2>Precio</h2>
+        <div >
+            <input [formControl]="minimo" type="number" name="" id="" placeholder="minimo"> -
+            <input [formControl]="maximo" type="number" name="" id="" placeholder="maximo">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h2>Mejor Descripción del Lugar</h2>
+        <br>
+        <div class="label">
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(0)" [style.background-color]="checkDescri[0]">Residencia</button></div></div> 
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(1)" [style.background-color]="checkDescri[1]">Cabaña</button></div></div>
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(2)" [style.background-color]="checkDescri[2]">Villa</button></div></div>
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(3)" [style.background-color]="checkDescri[3]">Casa adosada</button> </div></div>
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(4)" [style.background-color]="checkDescri[4]">Casa de campo </button></div></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <h2>Número de Huéspedes, Baños y Camas</h2>
+        <div>
+            <input [formControl]="huesped" type="number" name="" id="" placeholder="huésped" style="margin: 15px 0 0 15px;">
+            <input [formControl]="banios" type="number" name="" id="" placeholder="baños" style="margin: 15px 0 0 15px;">
+            <input [formControl]="camas" type="number" name="" id="" placeholder="camas" style="margin: 15px 0 0 15px;">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h2>Tipo de Espacio</h2>
+        <br>
+        <div class="label">
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(5)" [style.background-color]="checkDescri[5]">Entero</button></div></div> 
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(6)" [style.background-color]="checkDescri[6]">Privada</button></div></div>
+            <div class="filtro_list"><div class="filtro_opcion"><button (click)="check(7)" [style.background-color]="checkDescri[7]">Compartida</button></div></div>
+        </div>
+  
+    </div>
+    <hr/>
+    <div class="filtroButton">
+  
+        <button (click)="filtrar()">Mostrar</button>
+    </div>
+  </div>
+  

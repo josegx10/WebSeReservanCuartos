@@ -1,0 +1,3 @@
+<app-info-cuartos *ngIf="acceso == 1" (acceso)="CambiarAcceso($event)"></app-info-cuartos>
+<app-login  *ngIf="acceso == 8" (acceso)="CambiarAcceso($event)"></app-login>
+<app-registro *ngIf="acceso == 9" (acceso)="CambiarAcceso($event)"></app-registro>

@@ -1,0 +1,118 @@
+
+    <app-cabezera  (acceso)="CambiarAcceso($event)"></app-cabezera>
+
+<h1 class="titulo">Configuración del sitio</h1>
+    
+<div class="usuario" *ngFor="let l of Lugar">
+    
+   
+    <div class="formulario">
+        <p>Precio <br/> ${{l.Dinero}}</p> 
+    </div>
+    
+    <div class="invocacion">
+        <input type="number" name="" id="" [value]="l.Dinero" [formControl]="dinero">
+            
+    </div>
+    
+    <div class="formulario">
+        <p>Hablitar <br/> {{habilitado}} </p>
+    </div>
+    
+        <div class="invocacion">
+            <select name="" id="" class="checkbox" [(ngModel)]="valido" >
+                <option [value]="true">Habilitado</option>
+                <option [value]="false">Desabilitado</option>
+            </select>
+            
+        </div>
+    
+    <div class="formulario">
+        <p>Números de<br/>huéspedes camas baños </p> 
+    </div>
+    <div class="invocacion">
+        <div class="varias">
+            <div class="n">
+                <button class="m">-</button>
+                <input type="number" name="" id="" placeholder="Huésped" [value]="l.NHuespedes" [formControl]="huesped">
+                <button class="m">+</button>
+            </div>
+            <div class="n">
+                <button class="m">-</button>
+                <input type="number" name="" id="" placeholder="Camas" [value]="l.NCamas" [formControl]="camas">
+                <button class="m">+</button>
+            </div>
+            <div class="n">
+                <button class="m">-</button>
+                <input type="number" name="" id="" placeholder="baños" [value]="l.NBanios" [formControl]="banios">
+                <button class="m">+</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    <div class="formulario">
+        <p>Titulo</p> 
+    </div>
+    <div class="invocacion">
+        <textarea name="" id="" cols="30" rows="10" [value]="l.Titulo" [formControl]="titulo"></textarea> 
+    </div>
+    <div class="formulario">
+        <p>Descripción</p> 
+    </div>
+    <div class="invocacion">
+        <textarea name="" id="" cols="30" rows="10" [value]="l.Descripcion" [formControl]="descripcion"></textarea>
+    </div>
+    <div class="formulario">
+        <p>Agregar Periodos </p> <a (click)="CambiarEditar(2)">Agregar</a>
+    </div>
+    <div class="invocacion"  *ngIf="Editar == 2">
+        <input type="date" name="" id="" value="2021-10-09" [formControl]="fechaI"> - <input type="date" name="" id="" [formControl]="fechaF">
+        <button (click)="AgregarPeriodo(l.id_usuario, l.id)">Guardar</button>
+        <button (click)="CambiarEditar(0)">Salir</button>
+    </div>
+    <div class="formulario">
+        <p>Ver Periodo</p> <a (click)="CambiarEditar(1)">Ver</a>
+    </div> 
+    
+    <div  *ngIf="Editar == 1" class="periodos_cuartos" >
+        <div style="float: left;">
+            <div *ngFor="let p of periodo" >
+                <div *ngIf="l.id == p.id_lugar" >
+                    <h4 >{{p.fInicial}} - {{p.fFinal}}</h4> 
+                </div>
+                
+            </div>
+        </div>
+        <button  (click)=" CambiarEditar(0)">Salir</button> 
+    </div>
+    
+    <div class="modificar_lugar"><button  (click)="ModificarLugar(l.id, l.id_usuario , l.ubicacion , l.Tipo_Lugar, l.Descripcion_Lugar, l.Tipo_espacio, l.Calle, l.Opcional, l.Ciudad, l.Estado,l.CP , l.Pais)"> Modificar</button></div> 
+    <div class="eliminar_lugar"><button (click)="EliminarCuarto(l.id)">Eliminar</button></div> 
+</div>
+<div class="informacion" style="background-color: white;">
+    <h1>Listado de Huespedes </h1>
+    <div *ngFor="let r of reserva">
+        <div class="lugar_huesped" *ngIf="id == r.idLugar" style="background-color: white; color: black;">
+            <div >
+                <div *ngFor="let u of usuarios">
+                    <h4 *ngIf="u.id == r.idUsuario"> Usuario: {{u.nombre}}</h4>
+                    <h4 *ngIf="u.id == r.idUsuario"> Correo: {{u.email}} y Telefono: {{u.numero}}</h4>
+                </div>
+                <div *ngFor="let p of periodo">
+                    <h4 *ngIf="p.id == r.idPeriodo"> Periodo: {{p.fInicial}} - {{p.fFinal}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>Listado de comentario </h1>
+    <div class="lugar_huesped" *ngFor="let c of comentario" style="background-color: white; color: black;">
+        <div *ngFor="let u of usuarios">
+            <h4 *ngIf="u.id == c.id_usuario">Correo: {{u.email}} </h4>
+        </div>
+        <h4>Comentario: {{c.Comentario}}</h4>
+    </div>    
+</div>
+
+

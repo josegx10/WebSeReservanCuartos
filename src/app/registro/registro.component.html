@@ -1,0 +1,22 @@
+<div class="Login">
+    <button class="login_salir" (click)="Salir()">X</button>
+    <h1 style="font-size: 30px; margin: 15px 15px 0 27%">Registrate</h1>
+    <hr style="margin: 5px 0 0 0"/>
+    <form class="registroContenido" [formGroup]="Registro">
+      <h3>Correo Electronico</h3>
+      <input type="email" name="" id="email" placeholder="Correo Electronico"  formControlName="email">
+      <h3>Contraseña</h3>
+      <input type="password" name="" id="pass" placeholder="Contraseña" formControlName="pass">
+      <h3>Apellidos</h3>
+      <input type="text" placeholder="Apellidos" formControlName="ape">
+      <h3>Nombre(s)</h3>
+      <input type="text" placeholder="Nombre(s)" formControlName="name">
+      <h3>Número Teléfonico</h3>
+      <input type="text" placeholder="Número Teléfonico" formControlName="telefono">
+      <h3>Fecha de Nacimiento</h3>
+      <input type="date" formControlName="date">
+      <div class="loginButton">
+          <Button (click)="CrearUsuario()">Registrarse</Button>
+      </div>
+    </form>
+  </div>

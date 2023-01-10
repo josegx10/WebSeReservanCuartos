@@ -1,0 +1,12 @@
+<div class="barra">
+    <div  class="menu_barra" *ngFor="let c of categoria" (click)="VerCategoria(c.id)">
+      <img src="https://sheltered-stream-77543.herokuapp.com{{c.Icono}}" alt="http://localhost/ApiEjemplo/public{{c.Icono}}">
+      {{c.Nombre}}
+    </div>
+  
+  
+    <div class="filtro"  (click)="AbrirFiltro()">
+      <img src="../../assets/images/filtro.png" alt="" >
+      filtro
+    </div>
+  </div>

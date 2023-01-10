@@ -1,0 +1,25 @@
+
+<div class="list_cuartos">
+  <div class="mensaje">Ordenar por:</div>
+  <select [(ngModel)]="ordenar" (change)="seleccionar()">
+    <option value="default">default</option>
+    <option value="periodoMayor"> Con la fecha mas lejana </option>
+    <option value="periodoMenor"> Con la fecha mas cercana</option>
+    <option value="precioMayor"> Con el mayor precio</option>
+    <option value="precioMenor">Con el menor precio</option>
+  </select>
+    <div *ngFor="let l of Lugares | orderBy: order: alreves : true">
+      <div *ngIf="l.fechaF!==undefined && l.enable == 1">
+    <a class="cuarto" *ngIf="l.id_usuario != id" href="/{{l.id}}" target="_blank">
+      <div class="cuartoImg" *ngFor="let i of Image">
+        <img src="https://sheltered-stream-77543.herokuapp.com{{i.imagen}}" alt="" *ngIf="i.id_lugar == l.id">
+      </div>
+      <h2>{{l.Ciudad}}, {{l.Pais}}</h2>
+      <h2>{{l.fechaI}} - {{l.fechaF}}</h2>
+      <h2 >${{l.Dinero}}</h2>
+    </a>
+  </div>
+  </div>
+</div>
+
+  

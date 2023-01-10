@@ -1,0 +1,9 @@
+<app-index *ngIf="acceso == 1" (acceso)="CambiarAcceso($event)"></app-index>
+<!--<app-info-cuartos *ngIf="acceso == 3" (acceso)="CambiarAcceso($event)"></app-info-cuartos>-->
+<app-login *ngIf="acceso == 8" (acceso)="CambiarAcceso($event)"></app-login>
+<app-registro *ngIf="acceso == 9" (acceso)="CambiarAcceso($event)"></app-registro>
+<app-conf-user *ngIf="acceso == 6" (acceso)="CambiarAcceso($event)"></app-conf-user>
+<app-hazte-anfitrion *ngIf="acceso == 2" (acceso)="CambiarAcceso($event)"></app-hazte-anfitrion>
+<app-conf-cuarto *ngIf="acceso == 5" (acceso)="CambiarAcceso($event)"></app-conf-cuarto>
+<app-list-cuartos *ngIf="acceso == 4" (acceso)="CambiarAcceso($event)"></app-list-cuartos>
+<app-comentarios *ngIf="acceso == 7" (acceso)="CambiarAcceso($event)"></app-comentarios>

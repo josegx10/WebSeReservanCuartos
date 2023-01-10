@@ -1,0 +1,12 @@
+<div class="notifica">
+    <button class="filtros_salir" (click)="quitar()">X</button>
+    <h1 style="font-size: 45px; margin: 0 0 0 30%">Notificación</h1>
+    <hr/>
+    <div class="filtro_contenido"> 
+        <div class="notificacion" *ngFor="let n of notifica | orderBy: id: true: true">
+            <h4>fecha: {{dejarFecha(n.created_at)}}</h4>
+            <h4> {{n.notificacion}} </h4>    
+        </div>
+        
+    
+    </div> 

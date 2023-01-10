@@ -1,0 +1,19 @@
+<app-cabezera (acceso)="CambiarAcceso($event)"></app-cabezera>
+<h1 class="titulo" style="float: left;">Lugares disponibles</h1> <button (click)="Reservar()" style="width: 35px; height: 35px; padding: 0; margin: 15px;"><img style="width: 30px; height: 30px;" src="../../assets/images/recargar.png" alt=""></button> <br> <br>
+    <div class="Anfitrion_list" *ngIf="Reserva">
+        <div class="Anfitrion_lugar" *ngFor="let c of cuartos">
+            <div *ngFor="let i of Image">
+              <img src="https://sheltered-stream-77543.herokuapp.com{{i.imagen}}" alt=""  *ngIf="i.id_lugar == c.id">
+            </div>
+            <div class="info" style="margin:0px 0 0 20px; float:left" >
+                <h2 >Lugar del Anfitrion</h2>
+                <h3 style="margin:5px 0 0 0;" *ngIf="c.enable == 1">Lugar: Desocupado</h3>
+                <h3 style="margin:5px 0 0 0;" *ngIf="c.enable == 0">Lugar: Desactivado</h3>
+            </div>
+            <div style="float:right;margin: 9px 0;" class="Anfitrion_Button">
+                <button style="background-color:green ;" (click)="AbrirCuartos(c.id)">Configurar</button>
+                <button style="background-color: red;" (click)="EliminarCuarto(c.id)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    <div class="Agregar" ><button (click)="VerInfo($event)">+</button></div>

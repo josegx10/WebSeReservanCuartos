@@ -1,0 +1,56 @@
+
+<app-cabezera-cuartos (acceso)="CambiarAcceso($event)"></app-cabezera-cuartos>
+
+
+<div *ngFor="let l of Lugar">
+    
+    <div *ngIf="l.id == id">
+        <h1 class="titulo" style="float: left;">Titulo: {{l.Titulo}}</h1> <button (click)="Refrescar()" style="width: 35px; height: 35px; padding: 0; margin: 15px;"><img style="width: 30px; height: 30px;" src="../../assets/images/recargar.png" alt=""></button> <br> <br>
+      <div class="cuartos_info">
+          <div class="all_image">
+              <div class="img_lugar" *ngFor="let i of Image">
+                  <img src="http://localhost/ApiEjemplo/public{{i.imagen}}" alt="">
+              </div>
+    
+          </div>
+          <div *ngFor="let u of usuario"><h1 *ngIf="u.id == l.id_usuario">Anfitrion: {{u.nombre}} {{u.apellido}} </h1></div>
+          <h2> Huespedes: {{l.NHuespedes}} camas: {{l.NCamas}} banios: {{l.NBanios}}</h2>
+          <h2>Descripcion</h2>
+          <h3>{{l.Descripcion}}</h3>
+          <h2> Aspectos y Servicios que ofrece </h2>
+          <div class="cuartos_caracteristicas">
+              <div class="cuar_carac" *ngFor="let c of Cate">
+                  <img src="https://sheltered-stream-77543.herokuapp.com{{c.Icono}}" alt="http://localhost/ApiEjemplo/public{{c.Icono}}">
+                  <h3>{{c.Nombre}}</h3>
+              </div>
+          </div>
+          <br>
+          <br>
+          <div *ngFor="let u of usuario"><h4 *ngIf="u.id == l.id_usuario">Contactos del Anfitrion: Correo Electronico {{u.email}}, Numero Telefonico {{u.numero}} </h4></div>
+          <div class="listComentariosCuartos">
+              <div class="cuartos_comentarios" *ngFor="let c of comentarios">
+                  <div *ngFor="let u of usuario"> <h3 *ngIf="u.id == c.id_usuario"> usuario: {{u.email}}</h3></div>
+                  <h4>Comentario: {{c.Comentario}}</h4>
+              </div>
+          </div>
+      </div>
+    
+      <div class="cuartos_reserva">
+          <h1> ${{l.Dinero}} X Dia</h1>
+          <h4 style="margin: 0 15px;"> Fecha de llegada  -  Fecha de salida </h4>
+            <div class="dates">
+            <select name="" id="" [(ngModel)]="fechas">
+                <option [value]="p.id" *ngFor="let p of periodo" >{{p.fInicial + '   -   ' + p.fFinal}}</option>
+            </select>
+        </div>
+          <div class="NHuespedes">
+              <h3>Huéspedes</h3><input type="number" name="" id="" [formControl]="huesped">
+          </div>
+    
+    
+          <button (click)="Reservar(l.id, l.id_usuario, l.Dinero, l.Titulo, l.NHuespedes)" [disabled]="validar">Reservar</button>
+          
+    
+      </div>
+      </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="Login">
+    <button class="login_salir" (click)="salir()">X</button>
+    <h1 style="font-size: 30px; margin: 15px 0 0 23%">Iniciar seción</h1>
+    <hr style="margin: 5px 0 0 0;"/>
+    <form class="loginContenido" [formGroup]="user">
+        <h1 style="margin: 0 0 0 0;padding: 5px">Ingresa el Correo</h1>
+        <input type="email" placeholder="Correo Electronico" style="margin:0 0px  0 0px ;padding: 5px; width: 275px;border-radius: 5px; border: 1px solid rgb(0,0, 0); height: 40px;" formControlName="email"> <br>
+        <h3 style="padding: 5px;">Contraseña</h3>
+        <input type="password" name="" id="" placeholder="Contraseña" style="margin:0 0px  0 0px ;padding: 5px; width: 275px;border-radius: 5px; border: 1px solid rgb(0,0, 0); height: 40px;" formControlName="pass">
+      <div class="loginButton">
+        <button (click)="Acceder()">Iniciar Secion</button>
+      </div>
+    <a href="" style="color:black; margin: 0  0 300px  0; padding: 5px;" (click)="CambiaRegistro()">Registrate</a>
+    </form>
+  </div>

@@ -118,24 +118,29 @@ export class ConfCuartoComponent implements OnInit{
     });
   }
   EliminarCuarto(id: any){
-    this.conexion.CapturarNotificacion(new Notificationes(this.id, 'Haz eliminado tu cuarto')).subscribe(Respuesta => {});
-    this.conexion.verComentariosLugar(id, 0).subscribe(Respuesta => {
-      var dato = 0;
+    this.conexion.CapturarNotificacion(new Notificationes(localStorage.getItem('Id'), 'Haz eliminado tu cuarto')).subscribe(Respuesta => {});
+    this.conexion.VerReserva().subscribe(Respuesta => {
+      
       for(let r of Respuesta){
-        if(r.id_usuario != dato){
-          dato = r.id_usuario;
-          this.conexion.CapturarNotificacion(new Notificationes(r.id_usuario, `Han eliminado un cuarto que ya estaba registrado`)).subscribe(Respuesta => {})
-          this.socket.emitEvent({
-            name: 'EliminarCuarto',
-            id: localStorage.getItem('Id'), 
-            id_lugar: id,
-            id_usuario: r.id_usuario
-           });  
+        if(r.idLugar == id){
+          
+          this.conexion.UserIndividual(localStorage.getItem('Id')).subscribe(Res => {
+            this.conexion.CapturarNotificacion(new Notificationes(r.idUsuario, `El anfitrion ${Res[0].email} ha eliminado un cuarto que ya estabas registrado`)).subscribe(Respuesta => {});
+            this.conexion.LugarIndividual(id).subscribe(Responde => {
+              this.socket.emitEvent({
+                name: 'EliminarCuarto',
+                id: r.idUsuario, 
+                nombre: Res[0].email
+               });
+            })
+          })
+           
         }
       }
     });
     this.toast.success('Se a eliminado tu cuarto', 'Cuarto Eliminado');
     this.conexion.EliminarLugar(id).subscribe(Respuesta => {});
+    this.conexion.VerGeneral(4,this.id).subscribe(Respuesta => this.Lugar = Respuesta);
     this.acceso.emit(4);
   }
 }

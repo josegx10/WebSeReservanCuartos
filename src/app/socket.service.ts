@@ -13,6 +13,7 @@ export class SocketService extends Socket{
   constructor(private cookie: CookieService, private tost: ToastrService) { 
     super({
       url: 'https://socketsereservacuartos.herokuapp.com/',
+      //url: 'http://localhost:5000',
       options: {
         query: {
           nombre: localStorage.getItem('Socket')

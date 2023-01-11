@@ -17,6 +17,7 @@ export class ConfUserComponent {
   Lugares: any = [];
   usuarios : any= [];
   verNotificacion = false;
+  Periodo: any = [];
   constructor(private conexion: ConexionService, private cookie: CookieService, private toast: ToastrService) {
       this.info = new FormGroup({
         nombre: new FormControl('', Validators.required),
@@ -52,6 +53,7 @@ export class ConfUserComponent {
     this.conexion.VerReserva().subscribe(Respuesta => {this.Reserva = Respuesta;});
     this.conexion.capturarLugares().subscribe(Respuesta => {this.Lugares = Respuesta;});
     this.conexion.AllUser().subscribe(Respuesta => {this.usuarios = Respuesta;});
+    this.conexion.PeriodoGetAll().subscribe(Respuesta => {this.Periodo = Respuesta;});
   }
   ModificarUser(nombre: any, apellido: any, numero: any, email:any , fecha: any, num: number, Huesped: any, Anfitrion: any, pass: string){
     if(num == 1){
@@ -65,15 +67,28 @@ export class ConfUserComponent {
       this.info.controls['apellido'].setValue('');
       this.Editar = 0;
     }else if(num == 3){
-      this.conexion.ModificarUser(this.id, new User(this.info.value.numero,email,pass,apellido,nombre,fecha,Huesped,Anfitrion)).subscribe(Respuesta => {this.user = Respuesta;});
-      this.conexion.InfoUser(this.id).subscribe(Respuesta => {this.user = Respuesta;});
-      this.info.controls['numero'].setValue('');
-      this.Editar = 0;
+      this.conexion.ModificarUser(this.id, new User(this.info.value.numero,email,pass,apellido,nombre,fecha,Huesped,Anfitrion)).subscribe(Respuesta => {
+        if(Respuesta.id != undefined){
+          this.user = Respuesta;
+          this.conexion.InfoUser(this.id).subscribe(Respuesta => {this.user = Respuesta;});
+          this.info.controls['numero'].setValue('');
+          this.Editar = 0;
+        }else {
+          this.toast.error(Respuesta, 'Error')
+        }
+      });
     }else if(num == 4){
-      this.conexion.ModificarUser(this.id, new User(numero,this.info.value.email,pass,apellido, nombre,fecha,Huesped,Anfitrion)).subscribe(Respuesta => {this.user = Respuesta;});
-      this.conexion.InfoUser(this.id).subscribe(Respuesta => {this.user = Respuesta;});
-      this.info.controls['email'].setValue('');
-      this.Editar = 0;
+      this.conexion.ModificarUser(this.id, new User(numero,this.info.value.email,pass,apellido, nombre,fecha,Huesped,Anfitrion)).subscribe(Respuesta => {
+        if(Respuesta.id != undefined){
+          this.user = Respuesta;
+          this.conexion.InfoUser(this.id).subscribe(Respuesta => {this.user = Respuesta;});
+          this.info.controls['email'].setValue('');
+          this.Editar = 0;
+        }else {
+          this.toast.error(Respuesta,'Error')
+        }
+      });
+      
     }else if(num == 5){
       this.conexion.ModificarUser(this.id, new User(numero,email,pass ,apellido,nombre,this.info.value.fecha,Huesped,Anfitrion)).subscribe(Respuesta => {this.user = Respuesta;});
       this.conexion.InfoUser(this.id).subscribe(Respuesta => {this.user = Respuesta;});

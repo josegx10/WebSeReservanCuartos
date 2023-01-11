@@ -1,5 +1,5 @@
 <app-cabezera (acceso)="CambiarAcceso($event)"></app-cabezera>
-<h1 class="titulo" style="float: left;">Lugares disponibles</h1> <button (click)="Reservar()" style="width: 35px; height: 35px; padding: 0; margin: 15px;"><img style="width: 30px; height: 30px;" src="../../assets/images/recargar.png" alt=""></button> <br> <br>
+<h1 class="titulo" style="float: left;">Lugares disponibles</h1> <button (click)="Reservar()" style="width: 35px; height: 35px; padding: 0; margin: 15px 0 0 70%;"><img style="width: 30px; height: 30px;" src="../../assets/images/recargar.png" alt=""></button> <br> <br> <br> <br>
     <div class="Anfitrion_list" *ngIf="Reserva">
         <div class="Anfitrion_lugar" *ngFor="let c of cuartos">
             <div *ngFor="let i of Image">

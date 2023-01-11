@@ -43,9 +43,10 @@ export class MapaComponent {
         console.log(lng);
         if(elemento.fechaF!==undefined && elemento.enable == 1){
           marker([ parseFloat(lng[0]),parseFloat(lng[1])]).addTo(map).bindPopup(`
-          <a href="/${elemento.id}" target="_blank">
+          <a href="/#/${elemento.id}" target="_blank">
             <img src="https://sheltered-stream-77543.herokuapp.com${elemento.imagen}" alt="" >
-            <h2>${elemento.Ciudad}, ${elemento.Pais}</h2>
+            <h2>${elemento.Ciudad}, ${elemento.Estado}</h2>
+            <h2>$${elemento.fechaI} - ${elemento.fechaF}</h2>
             <h2>$${elemento.Dinero}</h2>
             
           </a>

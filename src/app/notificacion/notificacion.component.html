@@ -1,6 +1,10 @@
 <div class="notifica">
     <button class="filtros_salir" (click)="quitar()">X</button>
-    <h1 style="font-size: 45px; margin: 0 0 0 30%">Notificación</h1>
+    <h1 style="font-size: 45px; margin: 0 0 0 25%; float: left;">Notificación</h1>
+    <button (click)="comenta()" style="float: right; width: 45px; height: 45px; background-color: white; margin: 0 0 0 -1px; border:0;"><img style="width: 35px; height: 35px;" src="../../assets/images/recargar.png" alt=""> </button> 
+    <br>
+    <br>
+    <br>
     <hr/>
     <div class="filtro_contenido"> 
         <div class="notificacion" *ngFor="let n of notifica | orderBy: id: true: true">
@@ -10,3 +14,4 @@
         
     
     </div> 
+</div> 

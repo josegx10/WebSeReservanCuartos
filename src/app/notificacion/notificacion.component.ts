@@ -24,5 +24,8 @@ export class NotificacionComponent implements OnInit{
   dejarFecha(data: any) {
     return data.split('T')[0]
   }
+  comenta(){
+    this.conexion.VerNotificaciones(this.id).subscribe(Respuesta => {this.notifica = Respuesta;});
+  }
   
 }

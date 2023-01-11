@@ -115,7 +115,12 @@ export class InfoCuartosComponent implements OnInit {
     this.conexion.VerGeneral(2,this.id).subscribe(Respuesta => this.Image = Respuesta);
   }
   AccederLugar(){
-    this.conexion.LugarIndividual(this.id).subscribe((Respuesta: any[]) => this.Lugar = Respuesta);
+    this.conexion.LugarIndividual(this.id).subscribe((Respuesta: any[]) => {
+      this.Lugar = Respuesta
+      if(localStorage.getItem('Id') == Respuesta[0].id_usuario){
+        window.location.href="http://localhost:4200";
+      }
+    });
     this.conexion.VerPeriodo(this.id).subscribe(Respuesta => this.periodo = Respuesta);
     this.conexion.verComentariosLugar(this.id, 0).subscribe(Respuesta => this.comentarios = Respuesta);
     this.conexion.AllUser().subscribe(Respuesta => this.usuario = Respuesta);

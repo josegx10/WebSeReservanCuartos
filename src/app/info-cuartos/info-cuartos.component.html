@@ -5,18 +5,26 @@
 <div *ngFor="let l of Lugar">
     
     <div *ngIf="l.id == id">
-        <h1 class="titulo" style="float: left;">Titulo: {{l.Titulo}}</h1> <button (click)="Refrescar()" style="width: 35px; height: 35px; padding: 0; margin: 15px;"><img style="width: 30px; height: 30px;" src="../../assets/images/recargar.png" alt=""></button> <br> <br>
+        <h1 class="titulo" style="float: left;">Titulo: {{l.Titulo}}</h1> <button (click)="Refrescar()" style="width: 35px; height: 35px; padding: 0; margin: 15px 0 0 50%;"><img style="width: 30px; height: 30px;" src="../../assets/images/recargar.png" alt=""></button> <br> <br> <br>
       <div class="cuartos_info">
           <div class="all_image">
               <div class="img_lugar" *ngFor="let i of Image">
-                  <img src="http://localhost/ApiEjemplo/public{{i.imagen}}" alt="">
+                  <img src="https://sheltered-stream-77543.herokuapp.com{{i.imagen}}" alt="">
               </div>
     
           </div>
           <div *ngFor="let u of usuario"><h1 *ngIf="u.id == l.id_usuario">Anfitrion: {{u.nombre}} {{u.apellido}} </h1></div>
           <h2> Huespedes: {{l.NHuespedes}} camas: {{l.NCamas}} banios: {{l.NBanios}}</h2>
-          <h2>Descripcion</h2>
+          <h2>Descripcion:</h2>
           <h3>{{l.Descripcion}}</h3>
+          <br>
+          <br>
+          <h2>Ubicación:</h2>
+          <br>
+          <h3>Estado: {{l.Estado}}, Ciudad: {{l.Ciudad}} </h3>
+          <br>
+          <h3>Información de la Ubicación: {{l.Calle}}</h3>
+          <h3>Coordenadas: {{l.ubicacion}}</h3>
           <h2> Aspectos y Servicios que ofrece </h2>
           <div class="cuartos_caracteristicas">
               <div class="cuar_carac" *ngFor="let c of Cate">

@@ -10,11 +10,11 @@
   </select>
     <div *ngFor="let l of Lugares | orderBy: order: alreves : true">
       <div *ngIf="l.fechaF!==undefined && l.enable == 1">
-    <a class="cuarto" *ngIf="l.id_usuario != id" href="/{{l.id}}" target="_blank">
+    <a class="cuarto" *ngIf="l.id_usuario != id" href="/#/{{l.id}}" target="_blank">
       <div class="cuartoImg" *ngFor="let i of Image">
         <img src="https://sheltered-stream-77543.herokuapp.com{{i.imagen}}" alt="" *ngIf="i.id_lugar == l.id">
       </div>
-      <h2>{{l.Ciudad}}, {{l.Pais}}</h2>
+      <h2>{{l.Ciudad}}, {{l.Estado}}</h2>
       <h2>{{l.fechaI}} - {{l.fechaF}}</h2>
       <h2 >${{l.Dinero}}</h2>
     </a>

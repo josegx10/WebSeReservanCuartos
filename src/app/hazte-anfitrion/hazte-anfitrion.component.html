@@ -1,11 +1,11 @@
 <div *ngIf="cambio==1">
     <!--Alojamiento-->
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>¿Que tipo de Alojamiento vas a compartir?</h1>
      </div>
      <div class="opciones">
-       <a (click)="VolverIndex()">Guardar y Salir</a>
+       <a (click)="VolvelList()">Salir</a>
        <div *ngFor="let i of Icon">
          <div class="contenido" *ngIf="i.id > 15 && i.id != 22">
            <button (click)="SeleccionarButton(i.Nombre,1, i.id)" [style.background-color]="checkTipoLugar[i.id - 15]"> <h3> {{i.Nombre}} </h3> <img src="http://localhost/ApiEjemplo/public{{i.Icono}}" alt=""></button>
@@ -20,11 +20,11 @@
    <div *ngIf="cambio==2">
      <!--Descripcion del cuarto-->
       <div class="pregunta">
-        <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+        <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
         <h1>¿Cuál de estas opciones describe mejor tu alojamiento?</h1>
       </div>
       <div class="opciones">
-        <a (click)="VolverIndex()">Guardar y Salir</a>
+        <a (click)="VolvelList()">Salir</a>
         <div class="contenido"><button (click)="SeleccionarButton('Residencia', 2,0)" [style.background-color]="checkTipoDescripcion[0]"> <h3> Residencia </h3> </button></div>
         <div class="contenido"><button (click)="SeleccionarButton('Cabaña', 2,1)" [style.background-color]="checkTipoDescripcion[1]"> <h3> Cabaña </h3> </button></div>
         <div class="contenido"><button (click)="SeleccionarButton('Villa', 2,2)" [style.background-color]="checkTipoDescripcion[2]"> <h3> Villa </h3> </button></div>
@@ -39,11 +39,11 @@
     </div>
    <div *ngIf="cambio == 3">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>¿De qué tipo de espacio van a disponer los huéspedes?</h1>
    </div>
    <div class="opciones">
-       <a (click)="VolverIndex()">Guardar y Salir</a>
+       <a (click)="VolvelList()">Salir</a>
        <div class="N">
            <div class="numero" (click)="SeleccionarButton('Un alojamiento entero', 3,0)" [style.background-color]="checkTipoEspa[0]">
                <h3 >Un alojamiento entero </h3>
@@ -64,11 +64,11 @@
    </div>
    <div *ngIf="cambio == 4">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
-       <h1>¿Qué tipo de Alojamiento vas a compartir?</h1>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <h1>¿En que lugar se encuentra tu cuarto?</h1>
    </div>
    <div class="opciones">
-       <a (click)="VolverIndex()">Guardar y Salir</a>
+       <a (click)="VolvelList()">Salir</a>
        <form class="direccion" [formGroup]="direccion">
            Confirma tu dirección
            <input type="text" placeholder="Código Postal" formControlName="cp"> <button (click)="EncontrarCP()">Buscar</button>
@@ -91,11 +91,11 @@
    </div>
    <div *ngIf="cambio == 5">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>¿A cuántos huéspedes te gustaría recibir?</h1>
    </div>
    <div class="opciones">
-       <a (click)="VolverIndex()">Guardar y Salir</a>
+       <a (click)="VolvelList()">Salir</a>
        <div class="N">
            <div class="numero">
                <h3 >Huéspedes</h3>
@@ -125,14 +125,14 @@
    </div>
    <div *ngIf="cambio == 6">
      <div class="pregunta">
-         <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+         <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
          <h1>Cuéntale a los Huéspedes todo lo que tu espacio tiene para ofrecer</h1>
      </div>
      <div class="opciones">
-       <a (click)="VolverIndex()">Guardar y Salir</a>
-       <h1>¿Ofreces algún servicio especial?</h1>
+       <a (click)="VolvelList()">Salir</a>
+       <h1>¿Ofreces algún servicio especial o aspecto?</h1>
        <div *ngFor="let i of Icon">
-         <div class="icono" *ngIf="i.id < 16"><button (click)="ServicioAspectos(i.id)" [style.background-color]="checkAspectos[i.id -1]"> <img src="http://localhost/ApiEjemplo/public{{i.Icono}}" alt=""><h3> {{i.Nombre}} </h3></button></div>
+         <div class="icono" *ngIf="i.id < 16"><button (click)="ServicioAspectos(i.id)" [style.background-color]="checkAspectos[i.id -1]"> <img src="https://sheltered-stream-77543.herokuapp.com{{i.Icono}}" alt=""><h3> {{i.Nombre}} </h3></button></div>
    
        </div>
      </div>
@@ -144,11 +144,11 @@
    </div>
    <div *ngIf="cambio == 7">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>Ahora vamos a subir algunas fotos de tu alojamiento</h1>
    </div>
    <div class="opciones">
-       <a (click)="VolverIndex()">Guardar y Salir</a>
+       <a (click)="VolvelList()">Salir</a>
         <h1>Incluye las imagenes de tu lugar <input (change)="capturarFile($event)" type="file" name="" id="" style="background-image:url(../../assets/images/subida.png)"></h1>
    
          <div class="imagen" >
@@ -164,11 +164,11 @@
    </div>
    <div *ngIf="cambio == 8">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>Ponle un nombre a tu alojamiento</h1>
    </div>
    <div class="opciones">
-     <a (click)="VolverIndex()">Guardar y Salir</a>
+     <a (click)="VolvelList()">Salir</a>
        <h1>Crea tu título</h1>
        <form [formGroup]="titulo">
          <textarea name="" id="" cols="30" rows="10" formControlName="tit"></textarea>
@@ -182,11 +182,11 @@
    </div>
    <div *ngIf="cambio == 9">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
-       <h1>Ahora vamos a describir tu alojamiento</h1>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <h1>Ahora vamos a poner la descripción de donde se ubica tu cuarto</h1>
    </div>
    <div class="opciones">
-     <a (click)="VolverIndex()">Guardar y Salir</a>
+     <a (click)="VolvelList()">Salir</a>
      <h1>Describe la ubicacion</h1>
      
       <form class="descripcion" [formGroup]="calles">
@@ -201,15 +201,15 @@
    </div>
    <div *ngIf="cambio == 10">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>Ahora vamos a describir tu alojamiento</h1>
    </div>
    <div class="opciones">
-     <a (click)="VolverIndex()">Guardar y Salir</a>
+     <a (click)="VolvelList()">Salir</a>
    
        <h1>Crea tu descripción</h1>
        <form [formGroup]="description">
-         <textarea name="" id="" cols="30" rows="10"  formControlName="descripcion"></textarea>
+         <textarea name="" id="" cols="30" rows="10"  formControlName="descripcion" placeholder="Ingresa otros aspectos, detalles del cuarto y el lugar donde esta"></textarea>
        </form>
    </div>
    <div class="AtrasSiguiente">
@@ -219,11 +219,11 @@
    </div>
    <div *ngIf="cambio == 11">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>Ahora ingresa el precio </h1>
    </div>
    <div class="opciones">
-     <a (click)="VolverIndex()">Guardar y Salir</a>
+     <a (click)="VolvelList()">Salir</a>
        <h1>Ingresa un precio</h1>
        <form [formGroup]="precio">
          <input type="number" class="precio" formControlName="dinero">
@@ -237,11 +237,11 @@
    </div>
    <div *ngIf="cambio == 12">
      <div class="pregunta">
-       <a ><img src="../../assets/images/llave2.jpg" alt=""></a>
+       <a (click)="VolverIndex()"><img src="../../assets/images/llave2.jpg" alt=""></a>
        <h1>¡¡¡Felicidades!!! ya registra tu Alojamiento</h1>
    </div>
    <div class="opciones">
-     <a (click)="VolverIndex()">Guardar y Salir</a>
+     <a (click)="VolvelList()">Salir</a>
        <div class="final">
            <img [src]="previsualizacion[0]" alt="">
            <h1>{{titulo.value.tit}}</h1>

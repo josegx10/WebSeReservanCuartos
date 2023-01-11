@@ -20,17 +20,17 @@ export class AppComponent {
     localStorage.setItem('Socket','SeReservanCuartos')
     socket.callback.subscribe(res => {
       if(res.name == 'AccederACuarto'){
-        if(res.id_lugar == localStorage.getItem('Id')){
+        if(res.id == localStorage.getItem('Id')){
           conexion.LugarIndividual(res.id_lugar).subscribe(Respuesta => {
             toast.success(`Tienes un nuevo Huesped del cuarto ${Respuesta.Titulo}`, 'Tienes nuevo huesped');
           })
         
         }
       }else if(res.name == 'EliminarCuarto') {
-        if(res.id_usuario == localStorage.getItem('Id')){
-          conexion.LugarIndividual(res.id_lugar).subscribe(Respuesta => {
-            toast.success(`El anfitrion ha eliminado el cuarto: ${Respuesta.Titulo}`, 'Tienes nuevo huesped');
-          })
+        if(res.id == localStorage.getItem('Id')){
+          
+          toast.warning(`El anfitrion ${res.nombre} ha eliminado el cuarto que ya estas registrado`, 'Han eliminado un cuarto');
+          
         
         }
       }

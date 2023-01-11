@@ -85,6 +85,9 @@ export class HazteAnfitrionComponent {
   VolverIndex(){
     this.acceso.emit(1);
   }
+  VolvelList(){
+    this.acceso.emit(4);
+  }
   cambiarSiguiente(){
     this.cambio+=1;
     this.bloquear = true;

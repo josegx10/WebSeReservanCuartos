@@ -8,6 +8,10 @@ import { SocketService } from './socket.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderModule } from 'ngx-order-pipe';
 import { ToastrModule } from 'ngx-toastr';
+const routes: Routes = [
+  { path: ':id', component: CuartoComponent},
+  { path: '' , component: GeneralComponent}
+];
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -31,6 +35,8 @@ import { GeneralComponent } from './general/general.component';
 import { CuartoComponent } from './cuarto/cuarto.component';
 import { CabezeraCuartosComponent } from './cabezera-cuartos/cabezera-cuartos.component';
 import { MapaComponent } from './mapa/mapa.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -63,9 +69,10 @@ import { MapaComponent } from './mapa/mapa.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     OrderModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [CookieService, ConexionService, SocketService, ExtrasService],
+  providers: [CookieService, ConexionService, SocketService, ExtrasService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

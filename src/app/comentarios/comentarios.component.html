@@ -30,7 +30,7 @@
                 <div class="Anfitrion_lugar" *ngIf="id == c.id_usuario">
                     <div *ngFor="let l of lugares">
                         
-                        <img src="http://localhost/ApiEjemplo/public{{l.imagen}}" alt="" *ngIf="l.id == c.id_lugar">
+                        <img src="https://sheltered-stream-77543.herokuapp.com{{l.imagen}}" alt="" *ngIf="l.id == c.id_lugar">
                         <div class="info" style="margin:0px 0 0 20px; float:left" *ngIf="l.id == c.id_lugar">
                             <div *ngFor="let u of usuario">
                                 <h2 *ngIf="l.id_usuario == u.id">Lugar del Anfitrion: {{u.email}}</h2>

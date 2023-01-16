@@ -68,18 +68,18 @@
         <div class="Huesped">
             <p>Reservas realizadas:</p>
             <div *ngFor="let r of Reserva">
-                <div *ngIf="r.idUsuario == id" class="SoyHuesped" >
-                <a *ngFor="let l of Lugares" href="/#/{{l.id}}" target="_blank">
-                    <img *ngIf="r.idLugar == l.id " src="https://sheltered-stream-77543.herokuapp.com{{l.imagen}}" alt="">
-                    <h4 *ngIf="r.idLugar == l.id " >{{l.Titulo}}</h4>
-                    <div *ngFor="let p of Periodo">
-                        <h4 *ngIf="p.id == r.idPeriodo"> {{p.fInicial}} - {{p.fFinal}} </h4>
-                    </div>
-                    <div *ngFor="let u of usuarios">
-                        <h4 *ngIf="r.idLugar == l.id && u.id == l.id_usuario">{{u.email}}</h4>
-                    </div>
-                </a>
-            </div>
+                <div  *ngIf="r.idUsuario == id" class="SoyHuesped"  >
+                    <a *ngFor="let l of Lugares" href="/#/{{l.id}}" target="_blank">
+                        <img *ngIf="r.idLugar == l.id " src="https://sheltered-stream-77543.herokuapp.com{{l.imagen}}" alt="">
+                        <h4 *ngIf="r.idLugar == l.id " >{{l.Titulo}}</h4>
+                        <div *ngFor="let u of usuarios">
+                            <h4 *ngIf="r.idLugar == l.id && u.id == l.id_usuario">{{u.email}}</h4>
+                        </div>
+                        <div *ngFor="let p of Periodo">
+                            <h4 *ngIf="p.id == r.idPeriodo && r.idLugar == l.id"> {{p.fInicial}} - {{p.fFinal}} </h4>
+                        </div>
+                    </a>
+                </div>
                 
             </div>
         </div>

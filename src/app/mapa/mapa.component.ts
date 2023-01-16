@@ -41,7 +41,7 @@ export class MapaComponent {
         console.log(elemento.id);
         const lng = elemento.ubicacion.split(',',2);
         console.log(lng);
-        if(elemento.fechaF!==undefined && elemento.enable == 1){
+        if(elemento.fechaF!==undefined && elemento.enable == 1 && localStorage.getItem('Id') != elemento.id_usuario){
           marker([ parseFloat(lng[0]),parseFloat(lng[1])]).addTo(map).bindPopup(`
           <a href="/#/${elemento.id}" target="_blank">
             <img src="https://sheltered-stream-77543.herokuapp.com${elemento.imagen}" alt="" >

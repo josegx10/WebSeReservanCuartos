@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://unpkg.com/leaflet@1.9.3/dist/leaflet.css");
 #map { height: 380px; }
-#mapa { height: 500px; margin: 100px 0 0 5px }
+#mapa { height: 500px; margin: 120px 0 0 5px }
 * {
 	margin: 0;
 	padding: 0;

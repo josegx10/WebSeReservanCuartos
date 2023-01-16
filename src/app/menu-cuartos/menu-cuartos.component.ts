@@ -90,18 +90,23 @@ export class MenuCuartosComponent implements OnInit, OnDestroy{
             this.Lugares.push(l);
           }else if(data[5] == l.Tipo_espacio|| data[6] == l.Tipo_espacio|| data[7] == l.Tipo_espacio){
             this.Lugares.push(l);
-          }else if(parseFloat(data[8]) >= parseFloat( l.Dinero) && parseFloat( data[9]) <= parseFloat( l.Dinero)){
+          }else if(parseFloat(data[8])  <= parseFloat( `${l.Dinero}`) && parseFloat( data[9]) >= parseFloat( `${l.Dinero}`)){
             this.Lugares.push(l);
           }else if(data[10] == l.NHuespedes || data[11] == l.NBanios || data[12] == l.NCamas){
             this.Lugares.push(l);
           }
 
+
         }
+        console.log(this.Lugares)
       });
     }else if(this.cate == '22'){
       this.conexion.capturarLugares().subscribe(Respuesta => this.Lugares = Respuesta);
     }else {
-      this.conexion.VerGeneral(6,this.cate).subscribe(Respuesta => this.Lugares = Respuesta);
+      console.log(this.cate);
+      this.conexion.VerGeneral(6,this.cate).subscribe(Respuesta => {
+      this.Lugares = Respuesta;
+      console.log(Respuesta)});
     }
 
   }

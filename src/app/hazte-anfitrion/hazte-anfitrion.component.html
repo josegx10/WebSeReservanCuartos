@@ -8,7 +8,7 @@
        <a (click)="VolvelList()">Salir</a>
        <div *ngFor="let i of Icon">
          <div class="contenido" *ngIf="i.id > 15 && i.id != 22">
-           <button (click)="SeleccionarButton(i.Nombre,1, i.id)" [style.background-color]="checkTipoLugar[i.id - 15]"> <h3> {{i.Nombre}} </h3> <img src="http://localhost/ApiEjemplo/public{{i.Icono}}" alt=""></button>
+           <button (click)="SeleccionarButton(i.Nombre,1, i.id)" [style.background-color]="checkTipoLugar[i.id - 15]"> <h3> {{i.Nombre}} </h3> <img src="https://sheltered-stream-77543.herokuapp.com{{i.Icono}}" alt=""></button>
          </div>
        </div>
      </div>
